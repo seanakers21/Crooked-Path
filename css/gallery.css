@@ -21,53 +21,6 @@
   --shadow: 0 10px 30px rgba(0,0,0,.35);
 }
 
-/* -------- View Transitions: default cross-fade -------- */
-html { view-transition-name: page; }
-
-/* timing for both old and new snapshots */
-::view-transition-old(page),
-::view-transition-new(page) {
-  animation-duration: 320ms;
-  animation-timing-function: cubic-bezier(.2,.7,.1,1);
-}
-
-/* Optional: make the old page dip slightly darker as it fades */
-::view-transition-old(page) {
-  filter: brightness(.85);
-}
-
-/* -------- Variant: "wipe" from left (opt-in via data-transition="wipe") -------- */
-html.wipe ::view-transition-old(page),
-html.wipe ::view-transition-new(page) { animation-duration: 380ms; }
-
-@keyframes wipeIn {
-  from { clip-path: inset(0 100% 0 0); }
-  to   { clip-path: inset(0 0 0 0); }
-}
-@keyframes wipeOut {
-  from { clip-path: inset(0 0 0 0); }
-  to   { clip-path: inset(0 100% 0 0); }
-}
-html.wipe ::view-transition-new(page) { animation-name: wipeIn; }
-html.wipe ::view-transition-old(page) { animation-name: wipeOut; }
-
-/* -------- Fallback for browsers without View Transitions -------- */
-body { transition: opacity .28s ease; }
-html.leaving body { opacity: 0; }
-
-/* Optional: faint blur on fallback leave */
-html.leaving main { filter: blur(2px); transition: filter .28s ease; }
-
-/* Respect "Reduce motion" everywhere */
-@media (prefers-reduced-motion: reduce) {
-  ::view-transition-group(*),
-  ::view-transition-image-pair(*),
-  ::view-transition-old(*),
-  ::view-transition-new(*) { animation: none !important; }
-  body { transition: none !important; }
-  html.leaving main { filter: none !important; }
-}
-
 /* ====== Base ====== */
 *{ box-sizing:border-box; }
 html,body{ height:100%; }
@@ -163,30 +116,15 @@ nav a:hover::after{ transform:scaleX(1); }
   /* turn nav into an overlay drawer below header */
   nav{
     position: fixed;
-    top: 88px; /* below header */
-    left: 0; right: 0;
+    inset: 60px 0 auto 0; /* under header */
     background: color-mix(in oklab, var(--bg-2) 94%, transparent);
     border-bottom: 1px solid #202020;
     display:grid; gap:.75rem;
     padding:1rem 1.25rem 1.5rem;
-    transform: translateY(-140%);
+    transform: translateY(-120%);
     transition: transform .28s ease;
   }
   .nav-open nav{ transform: translateY(0); }
-
-  .home-banner {
-    position: relative;
-    isolation: isolate;
-    min-height: clamp(500px, 75vh, 800px) !important;
-    background-image: url('/assets/images/CP POSTER jumpscare.jpg') !important; /* replace with your image */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    margin: clamp(1rem, 4vw, 2rem) auto;
-    max-width: 1100px;
-  }
 }
 
 /* ====== Main layout ====== */
@@ -198,7 +136,7 @@ main{ padding: clamp(1rem, 2vw, 1.5rem); }
   isolation:isolate;
   background-image:
     linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)),
-    url('/assets/images/CP W4.png');
+    url('/assets/images/CP Homepage static.png');
   background-size:cover;
   background-position:center 30%;
   border-radius: var(--radius);
@@ -285,4 +223,99 @@ footer{
   color:#f1f1f1;
   max-width: 60ch;
   opacity:.96;
+}
+
+/* ====== Gallery ====== */
+.gallery-title{
+  font-family: Creepster, cursive;
+  font-size: var(--step-3);
+  margin: 0 0 .75rem;
+  letter-spacing:.5px;
+  color:#d3670e;
+  text-shadow: 0 0 14px color-mix(in oklab, var(--accent) 35%, transparent);
+  animation: spooky-flicker 8s linear infinite;
+}
+
+/* Intro/video card matches the other cards */
+.gallery-intro{
+  max-width: 1100px;
+  margin: clamp(1rem, 4vw, 2rem) auto 1.25rem;
+  padding: clamp(1rem, 3vw, 1.5rem);
+  background:
+    radial-gradient(80% 120% at 50% 0%, rgba(255,60,0,.06), transparent 60%),
+    var(--surface);
+  border:1px solid #222;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  color: var(--text);
+  text-shadow: 0 1px 2px rgba(0,0,0,.6);
+}
+
+/* Responsive 16:9 video with rounded corners and subtle ring on focus */
+.video-wrapper{
+  position:relative;
+  aspect-ratio: 16 / 9;
+  border-radius: calc(var(--radius) - 2px);
+  overflow:hidden;
+  outline:1px solid rgba(255,255,255,.05);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.02);
+}
+.gallery-video{
+  width:100%; height:100%; object-fit:cover; display:block;
+  background:#000;
+}
+.gallery-video:focus-visible{
+  outline:none;
+  box-shadow: 0 0 0 6px var(--ring);
+}
+
+/* Grid container styled like other sections */
+.gallery-grid{
+  max-width: 1100px;
+  margin: 0 auto 2.5rem;
+  padding: 0 clamp(1rem, 3vw, 1.5rem);
+}
+.gallery-grid h3{
+  font-family: Creepster, cursive;
+  font-size: var(--step-2);
+  margin: 0 0 .75rem;
+  color: var(--accent);
+  letter-spacing:.4px;
+  text-shadow: 0 0 14px color-mix(in oklab, var(--accent) 40%, transparent);
+}
+
+/* Responsive photo grid */
+.grid{
+  display:grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: clamp(.6rem, 2vw, 1rem);
+}
+@media (max-width: 600px){
+  .grid{ grid-template-columns: repeat(6, 1fr); }
+}
+
+/* Each image spans columns responsively */
+.grid img{
+  width:100%; height:auto; display:block;
+  grid-column: span 4;              /* 3 per row on desktop (12/4) */
+  border-radius: var(--radius);
+  outline: 1px solid rgba(255,255,255,.05);
+  box-shadow: var(--shadow);
+  filter: saturate(.92) contrast(1.02);
+  transition: transform .22s ease, filter .22s ease, box-shadow .22s ease;
+}
+@media (max-width: 900px){
+  .grid img{ grid-column: span 6; } /* 2 per row */
+}
+@media (max-width: 520px){
+  .grid img{ grid-column: span 6; } /* still 2 per row on small phones */
+}
+
+/* Subtle hover lift/glow */
+@media (hover:hover){
+  .grid img:hover{
+    transform: translateY(-3px);
+    filter: saturate(1) contrast(1.05);
+    box-shadow: 0 18px 40px rgba(0,0,0,.45), 0 0 0 2px color-mix(in oklab, var(--accent) 25%, transparent);
+  }
 }

@@ -1,0 +1,155 @@
+/* ====== Donate ====== */
+.donate-card{
+  max-width: 960px;
+  margin: clamp(1rem, 4vw, 2rem) auto 2.5rem;
+  padding: clamp(1.25rem, 3vw, 2rem) clamp(1rem, 3vw, 1.5rem);
+  background:
+    radial-gradient(80% 120% at 50% 0%, rgba(255,60,0,.08), transparent 60%),
+    var(--surface);
+  border:1px solid #222;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  color: var(--text);
+  text-shadow: 0 1px 2px rgba(0,0,0,.6);
+}
+
+.donate-card h2{
+  font-family: Creepster, cursive;
+  color: var(--accent);
+  font-size: var(--step-2);
+  margin: 0 0 .75rem;
+  letter-spacing:.4px;
+  text-shadow: 0 0 14px color-mix(in oklab, var(--accent) 40%, transparent);
+  animation: spooky-flicker 8s linear infinite;
+}
+
+.donate-intro{
+  margin: 0 0 1rem;
+  font-size: var(--step-0);
+  color:#ececec;
+}
+
+.donate-actions{
+  display:flex; gap:.6rem; flex-wrap:wrap;
+  margin: .25rem 0 1rem;
+}
+
+/* optional QR block */
+.donate-qr{
+  margin: .25rem 0 1rem;
+  display:inline-grid; gap:.35rem; justify-items:center;
+}
+.donate-qr img{
+  width:140px; height:140px; object-fit:cover;
+  border-radius:12px; background:#000;
+  outline:1px solid rgba(255,255,255,.06);
+  box-shadow: var(--shadow);
+}
+.donate-qr figcaption{ font-size: var(--step--1); color:#cfcfcf; }
+
+.donate-uses{
+  list-style:none; margin:0; padding:0;
+  font-size: var(--step-0); line-height:1.7;
+}
+.donate-uses li{ margin:.35rem 0; }
+
+/* Tiers */
+.donate-tiers{
+  max-width: 1100px;
+  margin: 0 auto 2.5rem;
+  padding: 0 clamp(1rem, 3vw, 1.5rem);
+}
+.donate-tiers h3{
+  font-family: Creepster, cursive;
+  color: var(--accent);
+  font-size: var(--step-2);
+  margin: 0 0 .75rem;
+  letter-spacing:.4px;
+  text-shadow: 0 0 14px color-mix(in oklab, var(--accent) 40%, transparent);
+}
+
+.tiers-grid{
+  display:grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: clamp(.6rem, 2vw, 1rem);
+}
+.tier{
+  grid-column: span 4;
+  background:
+    radial-gradient(80% 120% at 50% 0%, rgba(255,60,0,.06), transparent 60%),
+    #151515;
+  border:1px solid #222;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: clamp(.9rem, 2.4vw, 1.1rem);
+}
+@media (max-width: 900px){
+  .tier{ grid-column: span 6; }
+}
+@media (max-width: 520px){
+  .tier{ grid-column: span 12; }
+}
+
+.tier h4{
+  margin:0 0 .2rem; color:#fff; font-weight:700;
+}
+.tier .amt{
+  margin:.1rem 0 .45rem;
+  font-weight:800; color:#f7f7f7;
+  letter-spacing:.02em;
+}
+.tier p{ margin:.25rem 0; color:#dcdcdc; }
+
+.fine-print{
+  margin:.75rem 0 0;
+  font-size: var(--step--1);
+  color:#bdbdbd;
+}
+
+/* Optional alternate button style if needed */
+.btn-ghost{
+  display:inline-block;
+  padding:.65rem 1rem;
+  border-radius:999px;
+  border:1px solid #2a2a2a;
+  background:#141414;
+  color:#fff; font-weight:600;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.btn-ghost:hover{
+  transform: translateY(-1px);
+  border-color: var(--ring);
+  box-shadow: 0 0 0 6px var(--ring);
+}
+
+.donate-qr-card {
+  max-width: 480px;
+  margin: clamp(1rem, 4vw, 2rem) auto;
+  padding: clamp(1rem, 3vw, 1.5rem);
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  text-align: center;
+  border: 1px solid #222;
+}
+
+.donate-qr-card h2 {
+  font-family: Creepster, cursive;
+  font-size: var(--step-2);
+  color: var(--accent);
+  margin: 0 0 0.75rem;
+  text-shadow: 0 0 14px color-mix(in oklab, var(--accent) 40%, transparent);
+}
+
+.donate-qr-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+  margin-bottom: 0.5rem;
+}
+
+.donate-qr-card figcaption {
+  font-size: var(--step--1);
+  color: #cfcfcf;
+}

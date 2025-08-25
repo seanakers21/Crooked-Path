@@ -2,47 +2,67 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Contact – Crooked Path</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/contact.css" />
 </head>
 <body>
   <header>
-    <h1>Crooked Path</h1>
-    <nav>
+    <div style="align-items: center; display: flex; flex-direction: column">
+      <h1 class="brand">Crooked Path</h1>
+      <p class="brand" style="color: rgb(9, 160, 9); font-size: x-large;">Community Jumpscare</p>
+    </div>
+
+    <!-- burger shows only < 820px via CSS you already have -->
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav aria-label="Primary">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
-      <a href="pumpkin.html">Pumpkin Carving Contest</a>
+      <a href="donate.html">Donate</a>
+      <a href="pumpkin.html">Crooked Patch</a>
       <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
     </nav>
   </header>
 
   <main>
-    <section class="contact-section">
-      <h2>Contact the Crooked Path</h2>
-      <p>If you have any questions about the Crooked Path event, want to volunteer, or just want to say hello, feel free to reach out using the form below.</p>
+    <section class="contact-card" aria-labelledby="contact-title">
+      <h2 id="contact-title">Contact the Crooked Path</h2>
+      <p class="contact-intro">
+        Questions about the event, volunteering, or sponsorship? Send us a note.
+      </p>
 
-      <form action="mailto:ofakers@gmail.com" method="POST" enctype="text/plain">
-        <label for="name">Your Name:</label>
-        <input type="text" id="name" name="name" required />
+      <!-- mailto keeps it simple; opens the user's mail client -->
+      <form class="contact-form" action="mailto:awayseemsright@gmail.com" method="POST" enctype="text/plain">
+        <div class="field">
+          <label for="name">Your Name</label>
+          <input id="name" name="name" type="text" required autocomplete="name" />
+        </div>
 
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" rows="6" required></textarea>
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="6" required></textarea>
+        </div>
 
-        <button type="submit">Send Message</button>
+        <button class="btn-cta" type="submit">Send Message</button>
+        <p class="form-note">Submitting opens your default email app with the message prefilled.</p>
       </form>
     </section>
   </main>
 
-    <footer>
-    <p>
-        <a href="https://www.instagram.com/crooked_path_jumpscare" target="_blank" class="social-link">
-        <img src="assets/images/insta.png" alt="Instagram" class="social-icon" />
-        @crooked_path_jumpscare
-        </a>
-    </p>
-    </footer>
+  <footer>
+    <a href="https://www.instagram.com/crooked_path_jumpscare" target="_blank" class="social-link" rel="noopener">
+      <img src="assets/images/insta.png" alt="" class="social-icon" />
+      @crooked_path_jumpscare
+    </a>
+  </footer>
 
+  <script src="js/site.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,148 @@
+/* ====== Hero ====== */
+.carving-hero{
+  position:relative;
+  isolation:isolate;
+  background-image:
+    linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)),
+    url('/assets/images/CP Homepage static.png');
+  background-size:cover;
+  background-position:center 30%;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow:hidden;
+  padding: clamp(2rem, 5vw, 5rem) 1.25rem;
+  color:#fff;
+  text-shadow: 0 1px 2px rgba(0,0,0,.9);
+}
+
+.home-banner {
+  position: relative;
+  isolation: isolate;
+  min-height: clamp(320px, 65vh, 650px);
+  background-image: url('/assets/images/CP W4.png'); /* replace with your image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  margin: clamp(1rem, 4vw, 2rem) auto;
+  max-width: 1100px;
+}
+/* optional slow parallax tilt on hover (desktop only) */
+@media (hover:hover){
+  .carving-hero:hover{ transform: perspective(1000px) translateZ(0); }
+  .carving-hero:hover .carving-text{ transform: translateY(-2px); transition: transform .4s ease; }
+}
+
+.carving-text{ max-width: 900px; margin: 0 auto; }
+.carving-hero h2{
+  font-family: Creepster, cursive;
+  font-size: var(--step-4);
+  margin: 0 0 .25rem;
+  letter-spacing:.6px;
+  color:#fff;
+  animation: spooky-flicker 7.5s linear infinite;
+}
+.carving-hero p{ font-size: var(--step-0); margin:.5rem 0 .75rem; color:#f6f6f6; }
+
+/* ====== Footer ====== */
+footer{
+  padding:2rem 1rem; text-align:center; color:var(--muted);
+}
+.social-link{
+  display:inline-flex; align-items:center; gap:.5rem;
+  border-radius: 999px; padding:.35rem .75rem;
+  background: #141414; border:1px solid #1f1f1f;
+  transition: box-shadow .2s ease, border-color .2s ease, transform .2s ease;
+}
+.social-link:hover{
+  border-color: var(--ring);
+  box-shadow: 0 0 0 6px var(--ring);
+  transform: translateY(-1px);
+}
+.social-icon{ width:1.1rem; height:1.1rem; filter: grayscale(1) brightness(1.6); }
+
+/* ====== Scroll reveal (progressive) ====== */
+.reveal{ opacity:0; transform: translateY(14px); }
+.reveal.is-visible{ opacity:1; transform:none; transition: opacity .6s ease, transform .6s ease; }
+
+/* ====== Motion safety ====== */
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: 0s !important; }
+}
+
+/* ====== Keyframes ====== */
+@keyframes spooky-flicker{
+  0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity:1; }
+  20%, 24%, 55% { opacity:.72; }
+  23% { opacity:.45; }
+}
+
+/* ====== Utilities ====== */
+.container{ max-width: 1100px; margin:0 auto; padding-inline: 1rem; }
+
+/* ====== Home hero text (uses existing .carving-hero container) ====== */
+.home-eyebrow{
+  margin:0 0 .15rem;
+  color: color-mix(in oklab, var(--accent) 85%, #ffd8c4);
+  font: 600 var(--step-0) / 1 Inter, system-ui, sans-serif;
+  letter-spacing:.12em;
+  text-transform: uppercase;
+}
+
+.home-title{
+  font-family: Creepster, cursive;
+  font-size: var(--step-4);
+  margin:.15rem 0 .4rem;
+  letter-spacing:.6px;
+  animation: spooky-flicker 7s linear infinite;
+}
+
+.home-sub{
+  margin:0 auto;
+  font-size: var(--step-1);
+  color:#f1f1f1;
+  max-width: 60ch;
+  opacity:.96;
+}
+
+/* ====== Event card (matches your contest card vibe) ====== */
+.event-card{
+  max-width: 960px;
+  margin: clamp(1rem, 4vw, 2rem) auto 2.5rem;
+  padding: clamp(1.25rem, 3vw, 2rem) clamp(1rem, 3vw, 1.5rem);
+  background:
+    radial-gradient(80% 120% at 50% 0%, rgba(255,60,0,.08), transparent 60%),
+    var(--surface);
+  border:1px solid #222;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  color: var(--text);
+  text-shadow: 0 1px 2px rgba(0,0,0,.6);
+}
+
+.event-card h2{
+  font-family: Creepster, cursive;
+  color: var(--accent);
+  font-size: var(--step-2);
+  margin:0 0 .75rem;
+  letter-spacing:.4px;
+  text-shadow: 0 0 14px color-mix(in oklab, var(--accent) 40%, transparent);
+}
+
+.event-list{
+  list-style:none; margin:0; padding:0;
+  font-size: var(--step-0);
+  line-height:1.7;
+}
+.event-list li{ margin:.4rem 0; }
+.event-list strong{ color:#fff; }
+.event-list .free{
+  color:#15d35b; font-weight:700;
+  text-shadow: 0 0 12px rgba(21,211,91,.25);
+}
+
+/* Small phones: tighten subhead */
+@media (max-width: 420px){
+  .home-sub{ font-size: var(--step-0); }
+}

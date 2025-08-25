@@ -1,0 +1,64 @@
+/* ====== About ====== */
+.about-card{
+  max-width: 1100px;
+  margin: clamp(1rem, 4vw, 2rem) auto 2.5rem;
+  padding: clamp(1.25rem, 3vw, 2rem) clamp(1rem, 3vw, 1.5rem);
+  background:
+    radial-gradient(80% 120% at 50% 0%, rgba(255,60,0,.08), transparent 60%),
+    var(--surface);
+  border:1px solid #222;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  color: var(--text);
+  text-shadow: 0 1px 2px rgba(0,0,0,.6);
+}
+
+.about-card h2{
+  font-family: Creepster, cursive;
+  color: var(--accent);
+  font-size: var(--step-2);
+  margin: 0 0 1rem;
+  letter-spacing:.4px;
+  text-shadow: 0 0 14px color-mix(in oklab, var(--accent) 40%, transparent);
+  animation: spooky-flicker 8s linear infinite;
+}
+
+/* two-column layout that collapses nicely */
+.about-grid{
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: clamp(1rem, 3vw, 2rem);
+  align-items: start;
+}
+@media (max-width: 900px){
+  .about-grid{ grid-template-columns: 1fr; }
+}
+
+/* image card */
+.about-image{
+  margin:0;
+  border-radius: var(--radius);
+  overflow:hidden;
+  outline:1px solid rgba(255,255,255,.05);
+  box-shadow: var(--shadow);
+  background: #0f0f0f;
+}
+.about-image img{
+  width:100%; height:auto; display:block; object-fit:cover;
+  filter: contrast(1.02) saturate(.95);
+}
+
+/* text */
+.about-text{ font-size: var(--step-0); line-height:1.75; }
+.about-text p{ margin: .75rem 0; color:#ececec; }
+
+/* styled scripture callout */
+.scripture{
+  margin: 0 0 .75rem;
+  padding: .85rem 1rem;
+  border-left: 3px solid var(--accent);
+  background: linear-gradient(180deg, rgba(255,60,0,.06), rgba(255,60,0,.03));
+  border-radius: 10px;
+}
+.scripture p{ margin:0 0 .25rem; font-weight:600; color:#fff; }
+.scripture cite{ font-style: normal; color:#cfcfcf; font-size: var(--step--1); }

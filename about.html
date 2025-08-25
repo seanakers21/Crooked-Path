@@ -2,58 +2,77 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>About – Crooked Path</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/about.css" />
 </head>
 <body>
   <header>
-    <h1>Crooked Path</h1>
-    <nav>
+    <div style="align-items: center; display: flex; flex-direction: column">
+      <h1 class="brand">Crooked Path</h1>
+      <p class="brand" style="color: rgb(9, 160, 9); font-size: x-large;">Community Jumpscare</p>
+    </div>
+
+    <!-- hamburger shows only < 820px via your CSS -->
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav aria-label="Primary">
       <a href="index.html">Home</a>
-      <a href="pumpkin.html">Pumpkin Carving Contest</a>
+      <a href="about.html">About</a>
+      <a href="donate.html">Donate</a>
+      <a href="pumpkin.html">Crooked Patch</a>
       <a href="gallery.html">Gallery</a>
       <a href="contact.html">Contact</a>
     </nav>
   </header>
 
-    <main>
-    <section class="about-wrapper">
-        <div class="about-container">
-        <div class="about-image">
-            <img src="assets/images/tombstone.png" alt="A Way Seems Right Tombstone" />
-        </div>
+  <main>
+    <section class="about-card" aria-labelledby="about-title">
+      <h2 id="about-title">About the Crooked Path</h2>
+
+      <div class="about-grid">
+        <figure class="about-image">
+          <img src="assets/images/Tomb.png" alt="A Way Seems Right tombstone" />
+        </figure>
+
         <div class="about-text">
-            <p>
-            The Crooked Path is a free, family-friendly jump-scare attraction founded on the principles of Proverbs 14:12:  
-            "A way seems right to a man, but in the end it leads to death."  
-            In our hearts, we naturally have an idea of what we think is right.  
-            The problem is that we have all gone astray from the truth of God and created our own “truth,”  
-            which actually leads us to our own destruction.
-            </p>
-            <p>
-            Going along with this theme, guests walk through an ominous environment cloaked in darkness,
-            while ghastly fiends lie in wait! Instead of people dressed in costume, the attraction is populated
-            entirely with custom-made props, operated by volunteers in hidden control rooms, to give a more convincing experience.
-            </p>
-            <p>
-            Our desire is to make God’s truth known through this unique outreach and we hope you find it to be frightfully entertaining!
-            </p>
+          <blockquote class="scripture">
+            <p>“A way seems right to a man, but in the end it leads to death.”</p>
+            <cite>Proverbs 14:12</cite>
+          </blockquote>
+
+          <p>
+            The Crooked Path is a free, family-friendly jump-scare attraction. We lean into the tension of
+            what feels right versus what is true, using atmosphere and timing to deliver clean, startling fun.
+          </p>
+
+          <p>
+            Guests wind through an ominous environment cloaked in darkness while ghastly fiends lie in wait.
+            Instead of costumed actors, the experience is driven by custom-built props and effects,
+            operated by volunteers in hidden control rooms for a more convincing scare.
+          </p>
+
+          <p>
+            Our desire is to make God’s truth known through this unique outreach—and we hope you find it
+            frightfully entertaining.
+          </p>
         </div>
-        </div>
+      </div>
     </section>
-    </main>
+  </main>
 
+  <footer>
+    <a href="https://www.instagram.com/crooked_path_jumpscare" target="_blank" class="social-link" rel="noopener">
+      <img src="assets/images/insta.png" alt="" class="social-icon" />
+      @crooked_path_jumpscare
+    </a>
+  </footer>
 
-    <footer>
-    <p>
-        <a href="https://www.instagram.com/crooked_path_jumpscare" target="_blank" class="social-link">
-        <img src="assets/images/insta.png" alt="Instagram" class="social-icon" />
-        @crooked_path_jumpscare
-        </a>
-    </p>
-    </footer>
-
+  <script src="js/site.js" defer></script>
 </body>
 </html>

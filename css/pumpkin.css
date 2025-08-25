@@ -21,53 +21,6 @@
   --shadow: 0 10px 30px rgba(0,0,0,.35);
 }
 
-/* -------- View Transitions: default cross-fade -------- */
-html { view-transition-name: page; }
-
-/* timing for both old and new snapshots */
-::view-transition-old(page),
-::view-transition-new(page) {
-  animation-duration: 320ms;
-  animation-timing-function: cubic-bezier(.2,.7,.1,1);
-}
-
-/* Optional: make the old page dip slightly darker as it fades */
-::view-transition-old(page) {
-  filter: brightness(.85);
-}
-
-/* -------- Variant: "wipe" from left (opt-in via data-transition="wipe") -------- */
-html.wipe ::view-transition-old(page),
-html.wipe ::view-transition-new(page) { animation-duration: 380ms; }
-
-@keyframes wipeIn {
-  from { clip-path: inset(0 100% 0 0); }
-  to   { clip-path: inset(0 0 0 0); }
-}
-@keyframes wipeOut {
-  from { clip-path: inset(0 0 0 0); }
-  to   { clip-path: inset(0 100% 0 0); }
-}
-html.wipe ::view-transition-new(page) { animation-name: wipeIn; }
-html.wipe ::view-transition-old(page) { animation-name: wipeOut; }
-
-/* -------- Fallback for browsers without View Transitions -------- */
-body { transition: opacity .28s ease; }
-html.leaving body { opacity: 0; }
-
-/* Optional: faint blur on fallback leave */
-html.leaving main { filter: blur(2px); transition: filter .28s ease; }
-
-/* Respect "Reduce motion" everywhere */
-@media (prefers-reduced-motion: reduce) {
-  ::view-transition-group(*),
-  ::view-transition-image-pair(*),
-  ::view-transition-old(*),
-  ::view-transition-new(*) { animation: none !important; }
-  body { transition: none !important; }
-  html.leaving main { filter: none !important; }
-}
-
 /* ====== Base ====== */
 *{ box-sizing:border-box; }
 html,body{ height:100%; }
@@ -163,30 +116,15 @@ nav a:hover::after{ transform:scaleX(1); }
   /* turn nav into an overlay drawer below header */
   nav{
     position: fixed;
-    top: 88px; /* below header */
-    left: 0; right: 0;
+    inset: 60px 0 auto 0; /* under header */
     background: color-mix(in oklab, var(--bg-2) 94%, transparent);
     border-bottom: 1px solid #202020;
     display:grid; gap:.75rem;
     padding:1rem 1.25rem 1.5rem;
-    transform: translateY(-140%);
+    transform: translateY(-120%);
     transition: transform .28s ease;
   }
   .nav-open nav{ transform: translateY(0); }
-
-  .home-banner {
-    position: relative;
-    isolation: isolate;
-    min-height: clamp(500px, 75vh, 800px) !important;
-    background-image: url('/assets/images/CP POSTER jumpscare.jpg') !important; /* replace with your image */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    margin: clamp(1rem, 4vw, 2rem) auto;
-    max-width: 1100px;
-  }
 }
 
 /* ====== Main layout ====== */
@@ -198,7 +136,7 @@ main{ padding: clamp(1rem, 2vw, 1.5rem); }
   isolation:isolate;
   background-image:
     linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)),
-    url('/assets/images/CP W4.png');
+    url('/assets/images/OG_Pumpkin.png');
   background-size:cover;
   background-position:center 30%;
   border-radius: var(--radius);
@@ -225,6 +163,50 @@ main{ padding: clamp(1rem, 2vw, 1.5rem); }
   animation: spooky-flicker 7.5s linear infinite;
 }
 .carving-hero p{ font-size: var(--step-0); margin:.5rem 0 .75rem; color:#f6f6f6; }
+
+.prize-list{
+  list-style:none; padding:0; margin:.25rem 0 1rem;
+  font-size: var(--step-0);
+}
+.prize-list li{ position:relative; padding-left:1.25rem; margin:.35rem 0; }
+.prize-list li::before{
+  content:""; position:absolute; left:0; top:.45em; width:.6rem; height:.6rem;
+  border-radius:50%;
+  background: radial-gradient(circle at 30% 30%, var(--accent-2), var(--accent) 60%, #8b2a00 100%);
+  box-shadow: 0 0 10px color-mix(in oklab, var(--accent) 45%, transparent);
+}
+
+/* ====== Rules card ====== */
+.contest-rules{
+  margin: clamp(1rem, 4vw, 2rem) auto 2.5rem;
+  padding: clamp(1.25rem, 3.2vw, 2rem) clamp(1rem, 3vw, 1.5rem);
+  max-width: 960px;
+  color:#fff;
+  background-image:
+    linear-gradient(rgba(0,0,0,.68), rgba(0,0,0,.68)),
+    url('/assets/images/jack-o-lantern-world-2.webp');
+  background-size:cover; background-position:center;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  text-shadow:0 1px 2px rgba(0,0,0,.9);
+  outline: 1px solid rgba(255,255,255,.04);
+}
+
+.contest-rules h3{
+  font-family: Creepster, cursive;
+  color: var(--accent);
+  font-size: var(--step-2);
+  margin:0 0 .75rem;
+  letter-spacing:.4px;
+  text-shadow: 0 0 14px color-mix(in oklab, var(--accent) 40%, transparent);
+}
+
+.rules{
+  list-style:none; padding:0; margin:0;
+  font-size: var(--step-0);
+  line-height:1.65;
+}
+.rules li{ margin:.55rem 0; }
 
 /* ====== Footer ====== */
 footer{
@@ -261,28 +243,3 @@ footer{
 
 /* ====== Utilities ====== */
 .container{ max-width: 1100px; margin:0 auto; padding-inline: 1rem; }
-
-/* ====== Home hero text (uses existing .carving-hero container) ====== */
-.home-eyebrow{
-  margin:0 0 .15rem;
-  color: color-mix(in oklab, var(--accent) 85%, #ffd8c4);
-  font: 600 var(--step-0) / 1 Inter, system-ui, sans-serif;
-  letter-spacing:.12em;
-  text-transform: uppercase;
-}
-
-.home-title{
-  font-family: Creepster, cursive;
-  font-size: var(--step-4);
-  margin:.15rem 0 .4rem;
-  letter-spacing:.6px;
-  animation: spooky-flicker 7s linear infinite;
-}
-
-.home-sub{
-  margin:0 auto;
-  font-size: var(--step-1);
-  color:#f1f1f1;
-  max-width: 60ch;
-  opacity:.96;
-}

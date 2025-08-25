@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Donate – Crooked Path</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/donate.css" />
+
+</head>
+<body>
+  <header>
+    <div style="align-items: center; display: flex; flex-direction: column">
+      <h1 class="brand">Crooked Path</h1>
+      <p class="brand" style="color: rgb(9, 160, 9); font-size: x-large;">Community Jumpscare</p>
+    </div>
+
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="donate.html">Donate</a>
+      <a href="pumpkin.html">Crooked Patch</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="donate-card" aria-labelledby="donate-title">
+      <h2 id="donate-title">Support the Crooked Path</h2>
+      <p class="donate-intro">
+        The Crooked Path is a free, volunteer-run community haunt. Donations keep it
+        safe, maintain props and mechanisms, and help us build new scenes every year.
+        If you’d like to support the work and keep admission free, you can donate below.
+      </p>
+
+      <div class="donate-actions">
+        <a class="btn-cta" style="border: 1px solid white; padding: 15px;" href="https://www.gofundme.com/f/crooked-path-community-jumpscare" target="_blank" rel="noopener">
+          Donate on GoFundMe
+        </a>
+      </div>
+
+    </section>
+
+    <!-- Optional tiers card -->
+    <section class="donate-tiers" aria-labelledby="tiers-title">
+      <h3 id="tiers-title">Suggested Giving</h3>
+      <div class="tiers-grid">
+        <article class="tier">
+          <h4>Fabricator</h4>
+          <p class="amt">$10–$25</p>
+          <p>Paint, screws, adhesives, and small parts.</p>
+        </article>
+        <article class="tier">
+          <h4>Effects Crew</h4>
+          <p class="amt">$50–$100</p>
+          <p>Lights, sensors, servos, and replacement mechanisms.</p>
+        </article>
+        <article class="tier">
+          <h4>Scene Builder</h4>
+          <p class="amt">$250+</p>
+          <p>Lumber, pneumatics, controllers, and major set pieces.</p>
+        </article>
+      </div>
+      <p class="fine-print">Crooked Path is a community project; donations are currently not tax-deductible.</p>
+    </section>
+
+    <section class="donate-qr-card" aria-labelledby="donate-qr-title">
+      <h2 id="donate-qr-title">Scan to Support</h2>
+      <figure>
+        <img src="assets/images/gofundmetree.jpg" alt="GoFundMe QR Code and design" />
+        <figcaption>Point your camera to donate via GoFundMe</figcaption>
+      </figure>
+    </section>
+  </main>
+
+  <footer>
+    <a href="https://www.instagram.com/crooked_path_jumpscare" target="_blank" class="social-link" rel="noopener">
+      <img src="assets/images/insta.png" alt="" class="social-icon" />
+      @crooked_path_jumpscare
+    </a>
+  </footer>
+
+  <script src="js/site.js" defer></script>
+</body>
+</html>

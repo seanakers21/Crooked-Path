@@ -2,53 +2,72 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Crooked Path</title>
+
+  <!-- Same fonts as other page -->
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/home.css" />
 </head>
 <body>
   <header>
-    <h1 style="padding-bottom: 0; margin-bottom: 0">Crooked Path</h1>
-    <h3 style="padding-top: 0; margin-top: 0; color: green;">Community Jumpscare</h3>
-    <nav>
+    <div style="align-items: center; display: flex; flex-direction: column">
+      <h1 class="brand">Crooked Path</h1>
+      <p class="brand" style="color: rgb(9, 160, 9); font-size: x-large;">Community Jumpscare</p>
+    </div>
+    
+
+    <!-- hamburger (CSS shows it only < 820px) -->
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav aria-label="Primary">
+      <a href="index.html">Home</a>
       <a href="about.html">About</a>
-      <a href="pumpkin.html">Pumpkin Carving Contest</a>
+      <a href="donate.html">Donate</a>
+      <a href="pumpkin.html">Crooked Patch</a>
       <a href="gallery.html">Gallery</a>
       <a href="contact.html">Contact</a>
     </nav>
   </header>
 
   <main>
-    <section class="hero-image-section">
-      <img src="assets/images/CP Homepage static.png" alt="Returning October 2025" />
+    <!-- HERO uses the same .carving-hero pattern you already have -->
+    <!-- <section class="carving-hero reveal" aria-label="Crooked Path returns October 2025">
+      <div class="carving-text">
+        <h2 class="home-eyebrow">Community Jumpscare</h2>
+        <h3 class="home-title">Returning October 2025</h3>
+        <p class="home-sub">Darkness returns... are you ready?</p>
+      </div>
+    </section> -->
+
+    <section class="home-banner">
+
     </section>
 
-    <section class="intro-text">
-      <h2>Prepare for the Path</h2>
-      <p>Darkness returns... are you ready?</p>
-    </section>
-
-    <section class="event-info">
-        <h2>Event Details</h2>
-        <p><strong>Date:</strong> Halloween 2025</p>
-        <p><strong>Time:</strong> 6:00 PM – 10:00 PM</p>
-        <p><strong>Location:</strong> 2807 Morrene Dr, Placerville, CA 95667</p>
-        <p><strong>Admission:</strong> <span class="free">FREE ENTRY</span></p>
+    <!-- Event details styled like your rules card -->
+    <section class="event-card" aria-labelledby="event-title">
+      <h2 id="event-title">Event Details</h2>
+      <ul class="event-list">
+        <li><strong>Date:</strong> Halloween 2025</li>
+        <li><strong>Time:</strong> 6:00 PM – 10:00 PM</li>
+        <li><strong>Location:</strong> 2807 Morrene Dr, Placerville, CA 95667</li>
+        <li><strong>Admission:</strong> <span class="free">FREE ENTRY</span></li>
+      </ul>
     </section>
 
   </main>
 
-    <footer>
-    <p>
-        <a href="https://www.instagram.com/crooked_path_jumpscare" target="_blank" class="social-link">
-        <img src="assets/images/insta.png" alt="Instagram" class="social-icon" />
-        @crooked_path_jumpscare
-        </a>
-    </p>
-    </footer>
+  <footer>
+    <a href="https://www.instagram.com/crooked_path_jumpscare" target="_blank" class="social-link" rel="noopener">
+      <img src="assets/images/insta.png" alt="" class="social-icon" />
+      @crooked_path_jumpscare
+    </a>
+  </footer>
 
-
-  <script src="js/main.js"></script>
+  <!-- same tiny JS you used on the contest page -->
+  <script src="js/site.js" defer></script>
 </body>
 </html>

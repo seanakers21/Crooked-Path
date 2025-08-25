@@ -1,72 +1,81 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pumpkin Carving Contest – Crooked Path</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Kids 5–10 pumpkin carving contest at Crooked Path. Rules, dates, and prizes." />
+  <title>Crooked Path</title>
+  <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/pumpkin.css" />
 </head>
+<script src="js/site.js" defer></script>
+
 <body>
   <header>
-    <h1>Crooked Path</h1>
-    <nav>
+    <div style="align-items: center; display: flex; flex-direction: column">
+      <h1 class="brand">Crooked Path</h1>
+      <p class="brand" style="color: rgb(9, 160, 9); font-size: x-large;">Community Jumpscare</p>
+    </div>
+
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav aria-label="Primary">
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
+      <a href="donate.html">Donate</a>
+      <a href="pumpkin.html">Crooked Patch</a>
       <a href="gallery.html">Gallery</a>
       <a href="contact.html">Contact</a>
     </nav>
   </header>
 
-  <main>
-    <section class="carving-hero">
-        <div class="carving-text">
-        <h2>Crooked Cucurbits!</h2>
-        <p>
-            Hey kids! How about a pumpkin carving contest? Enter your creation for a chance to win under these categories:
-        </p>
-        <ul>
-            <li><em>Most Creative</em></li>
-            <li><em>Funniest</em></li>
-            <li><em>Scariest</em></li>
-            <li><em>Most Classic</em></li>
+  <main id="main">
+    <section class="carving-hero" aria-labelledby="hero-title">
+      <div class="carving-text">
+        <h2 id="hero-title">Crooked Cucurbits!</h2>
+        <p>Hey kids! Enter your pumpkin for a chance to win:</p>
+        <ul class="prize-list">
+          <li><em>Most Creative</em></li>
+          <li><em>Funniest</em></li>
+          <li><em>Scariest</em></li>
+          <li><em>Most Classic</em></li>
         </ul>
         <p>
-            All accepted entries will be displayed in the <strong>Crooked Path Pumpkin Patch</strong>, where the public will vote for their favorites!<br />
-            1st, 2nd, and 3rd place winners in each category will receive a Crooked Path goody bag!
+          Entries will be displayed in the <strong>Crooked Path Pumpkin Patch</strong> for public voting.
+          Prizes for 1st–3rd in each category!
         </p>
-        </div>
-        <!-- <div class="carving-image">
-            <img src="assets/images/Picture1.png" alt="Glowing Pumpkin" />
-        </div> -->
+      </div>
     </section>
 
-    <section class="contest-rules">
-      <h3>Contest Rules</h3>
-      <ul>
+    <section class="contest-rules" aria-labelledby="rules-title">
+      <h3 id="rules-title">Contest Rules</h3>
+      <ul class="rules">
         <li>Contestants: Kids ages 5–10</li>
         <li>One entry per contestant</li>
         <li>Entry must be your own design – no templates</li>
         <li>No inappropriate entries will be allowed</li>
-        <li>All entries must include name, age, and contact info</li>
-        <li>Entries accepted: <strong>Sunday, October 19th, 12–5pm</strong></li>
+        <li>Include name, age, and contact info with your entry</li>
+        <li>Entries accepted:
+          <strong><time datetime="2025-10-19T12:00">Sunday, October 19, 12–5 pm</time></strong>
+        </li>
         <li>Displayed by volunteers in the Crooked Patch</li>
-        <li>Judging: <strong>October 24–25</strong> by public vote (Scariest, Funniest, Best Overall)</li>
-        <li>Winners split into two brackets: Ages 5–7 & 8–10</li>
-        <li>Winners announced & prizes awarded: <strong>October 31st, 3–5pm</strong></li>
-        <li>Winner photos taken for website (guardian must be present)</li>
+        <li>Public voting:
+          <strong><time datetime="2025-10-24">Oct 24</time>–<time datetime="2025-10-25">25</time></strong>
+          (Scariest, Funniest, Best Overall)
+        </li>
+        <li>Two brackets: Ages 5–7 & 8–10</li>
+        <li>Winners announced:
+          <strong><time datetime="2025-10-31T15:00">Oct 31, 3–5 pm</time></strong>
+        </li>
+        <li>Winner photos for website (guardian must be present)</li>
       </ul>
-      <p class="carve-note">🎃 <em>Happy Carving!</em> 🎃</p>
     </section>
   </main>
 
   <footer>
-    <p>
-      <a href="https://www.instagram.com/crooked_path_jumpscare" target="_blank" class="social-link">
-        <img src="assets/images/insta.png" alt="Instagram" class="social-icon" />
-        @crooked_path_jumpscare
-      </a>
-    </p>
+    <a href="https://www.instagram.com/crooked_path_jumpscare" target="_blank" class="social-link" rel="noopener">
+      <img src="assets/images/insta.png" alt="" class="social-icon" /> @crooked_path_jumpscare
+    </a>
   </footer>
 </body>
-</html>
