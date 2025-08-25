@@ -189,6 +189,31 @@ nav a:hover::after{ transform:scaleX(1); }
     max-width: 1100px;
   }
 
+  .countdown-ribbon{
+    position: sticky;
+    top: calc(var(--header-height, 88px));
+    background: color-mix(in oklab, var(--bg-2) 88%, transparent);
+    border-bottom: 1px solid #222;
+    backdrop-filter: blur(6px);
+    z-index: 0 !important;
+  }
+
+  .ribbon-timer{
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: .45rem 1rem;
+    display: grid;
+    grid-auto-flow: column;
+    gap: .75rem;
+    justify-content: center;
+    align-items: end;
+    font-variant-numeric: tabular-nums;
+  }
+  .ribbon-timer .cd-seg{ display:grid; justify-items:center; gap:.15rem; }
+  .ribbon-timer .cd-val{ padding:.35rem .55rem; border-radius:10px; background:#111; border:1px solid #272727; font-weight:800; }
+  .ribbon-timer .cd-label{ font-size:.7rem; color:#cfcfcf; letter-spacing:.08em; text-transform:uppercase; }
+
+
 }
 
 /* ====== Main layout ====== */
@@ -295,6 +320,7 @@ footer{
   background: color-mix(in oklab, var(--bg-2) 88%, transparent);
   border-bottom: 1px solid #222;
   backdrop-filter: blur(6px);
+  z-index: 300;
 }
 
 .ribbon-timer{
