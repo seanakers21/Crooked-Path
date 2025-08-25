@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="assets/images/og.svg" type="image/svg+xml" />
   <title>Crooked Path</title>
 
   <!-- Same fonts as other page -->
@@ -48,7 +49,7 @@
     </section>
 
     <!-- Event details styled like your rules card -->
-    <section class="event-card" aria-labelledby="event-title">
+    <section class="event-card reveal" aria-labelledby="event-title">
       <h2 id="event-title">Event Details</h2>
       <ul class="event-list">
         <li><strong>Date:</strong> Halloween 2025</li>
@@ -57,6 +58,27 @@
         <li><strong>Admission:</strong> <span class="free">FREE ENTRY</span></li>
       </ul>
     </section>
+
+    <section class="map-card reveal" aria-labelledby="map-title">
+      <h3 id="map-title">Find Us</h3>
+      <div class="map-embed">
+        <iframe
+          title="Map to Crooked Path"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen
+          src="https://www.google.com/maps?q=2807%20Morrene%20Dr,%20Placerville,%20CA%2095667&output=embed">
+        </iframe>
+      </div>
+
+      <p class="map-actions">
+        <a class="btn-ghost" target="_blank" rel="noopener"
+          href="https://www.google.com/maps?q=2807+Morrene+Dr,+Placerville,+CA+95667">
+          Open in Google Maps
+        </a>
+      </p>
+    </section>
+
 
   </main>
 
