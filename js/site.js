@@ -212,3 +212,71 @@
 
   io.observe(banner);
 })();
+
+(() =>{
+  function placeNav() {
+    const bottom = 88; // distance from page top to banner bottom
+    document.documentElement.style.setProperty('--banner-bottom', bottom + 'px');
+  }
+  window.addEventListener('load', placeNav, {once:true});
+  window.addEventListener('resize', placeNav);
+  // if fonts/images change height after load:
+  new ResizeObserver(placeNav).observe(document.body);
+})();
+
+(function () {
+  const html = document.documentElement;
+
+  // fade-in on load
+  html.classList.add('fade-enter');
+  requestAnimationFrame(() => html.classList.add('fade-enter-active'));
+
+  // fade-out before navigating
+  function handleClick(e){
+    const a = e.target.closest('a[href]');
+    if (!a) return;
+    const url = new URL(a.href, location.href);
+    const sameOrigin = url.origin === location.origin;
+    const newTab = a.target && a.target !== '_self';
+    const download = a.hasAttribute('download') || url.hash && url.pathname === location.pathname;
+
+    if (!sameOrigin || newTab || download) return;
+
+    e.preventDefault();
+    html.classList.add('fade-exit-active');
+    setTimeout(() => { location.href = a.href; }, 180); // match CSS .18s
+  }
+  document.addEventListener('click', handleClick, {capture:true});
+})();
+
+(() => {
+  if ('startViewTransition' in document && 
+    matchMedia('(prefers-reduced-motion: no-preference)').matches) {
+
+  addEventListener('click', (e) => {
+    const a = e.target.closest('a[href]');
+    if (!a) return;
+    const url = new URL(a.href, location.href);
+    if (url.origin !== location.origin || a.target && a.target !== '_self') return;
+
+    e.preventDefault();
+    document.startViewTransition(async () => {
+      const resp = await fetch(a.href, { credentials: 'include' });
+      const html = await resp.text();
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      // Replace ONLY the content area to avoid reloading sticky header if you want
+      document.body.innerHTML = doc.body.innerHTML; 
+      history.pushState(null, '', a.href);
+      // re-run any per-page scripts if needed
+    });
+  });
+
+  // optional timing tweaks
+  const style = document.createElement('style');
+  style.textContent = `
+    ::view-transition-group(root) { animation-duration: .28s; }
+    ::view-transition-old(root), ::view-transition-new(root) { animation-timing-function: ease; }
+  `;
+  document.head.appendChild(style);
+}
+})

@@ -27,6 +27,7 @@
   box-shadow: var(--shadow);
   margin: clamp(1rem, 4vw, 2rem) auto;
   max-width: 1000px;
+  background-color: black;
 }
 /* optional slow parallax tilt on hover (desktop only) */
 @media (hover:hover){

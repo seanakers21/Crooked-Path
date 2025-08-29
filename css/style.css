@@ -22,7 +22,6 @@
 }
 
 /* -------- View Transitions: default cross-fade -------- */
-html { view-transition-name: page; }
 
 /* timing for both old and new snapshots */
 ::view-transition-old(page),
@@ -151,35 +150,36 @@ nav a::after{
 nav a:hover{ color:#fff; text-shadow:0 0 20px color-mix(in oklab, var(--accent) 50%, transparent); }
 nav a:hover::after{ transform:scaleX(1); }
 
-/* ====== Mobile nav (only under 820px) ====== */
 @media (max-width: 820px){
-  /* show burger on small screens */
+  :root{ --banner-bottom: 0px; } /* set by JS below */
+
   .nav-toggle{
     display:inline-flex;
     align-items:center;
     justify-content:center;
   }
 
-  /* turn nav into an overlay drawer below header */
   nav{
     position: fixed;
-    top: 88px; /* below header */
+    top: var(--banner-bottom);     /* sits at the bottom of .home-banner */
     left: 0; right: 0;
     background: color-mix(in oklab, var(--bg-2) 94%, transparent);
     border-bottom: 1px solid #202020;
-    display:grid; gap:.75rem;
-    padding:1rem 1.25rem 1.5rem;
-    transform: translateY(-140%);
+    display: grid; gap: .75rem;
+    padding: 1rem 1.25rem 1.5rem;
+    /* CLOSED state: move up by nav height + banner offset */
+    transform: translateY(calc(-100% - var(--banner-bottom)));
     transition: transform .28s ease;
-    z-index: 4500 !important;
+    z-index: 4500;
+    will-change: transform;
   }
   .nav-open nav{ transform: translateY(0); }
 
-  .home-banner {
+  .home-banner{
     position: relative;
     isolation: isolate;
     min-height: clamp(500px, 75vh, 800px) !important;
-    background-image: url('/assets/images/CP POSTER jumpscare.jpg') !important; /* replace with your image */
+    background-image: url('/assets/images/CP POSTER jumpscare.jpg') !important;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -192,10 +192,10 @@ nav a:hover::after{ transform:scaleX(1); }
   .countdown-ribbon{
     position: sticky;
     top: 0;
-    background: color-mix(in oklab, var(--bg-2) 88%, transparent);
+    background: rgb(69, 3, 136) !important;
     border-bottom: 1px solid #222;
     backdrop-filter: blur(6px);
-    z-index: 0 !important;
+    z-index: 0;
   }
 
   .ribbon-timer{
@@ -212,9 +212,8 @@ nav a:hover::after{ transform:scaleX(1); }
   .ribbon-timer .cd-seg{ display:grid; justify-items:center; gap:.15rem; }
   .ribbon-timer .cd-val{ padding:.35rem .55rem; border-radius:10px; background:#111; border:1px solid #272727; font-weight:800; }
   .ribbon-timer .cd-label{ font-size:.7rem; color:#cfcfcf; letter-spacing:.08em; text-transform:uppercase; }
-
-
 }
+
 
 /* ====== Main layout ====== */
 main{ padding: clamp(1rem, 2vw, 1.5rem); }
@@ -338,4 +337,15 @@ footer{
 .ribbon-timer .cd-seg{ display:grid; justify-items:center; gap:.15rem; }
 .ribbon-timer .cd-val{ padding:.35rem .55rem; border-radius:10px; background:#111; border:1px solid #272727; font-weight:800; }
 .ribbon-timer .cd-label{ font-size:.7rem; color:#cfcfcf; letter-spacing:.08em; text-transform:uppercase; }
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  .fade-enter { opacity: 0 }
+  .fade-enter-active { transition: opacity .25s ease; opacity: 1 }
+
+  .fade-exit-active { transition: opacity .18s ease; opacity: 0 }
+}
 
