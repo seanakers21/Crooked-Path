@@ -94,7 +94,7 @@ header{
   justify-content:space-between;
   gap:1rem;
   padding: .9rem clamp(1rem, 3vw, 2rem);
-  background: color-mix(in oklab, var(--bg-2) 75%, transparent);
+  background: color-mix(in oklab, var(rgb(77, 0, 128)) 75%, transparent);
   border-bottom: 1px solid #1f1f1f;
   backdrop-filter: blur(8px);
 }

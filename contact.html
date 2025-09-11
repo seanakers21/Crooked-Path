@@ -11,10 +11,10 @@
   <link rel="stylesheet" href="css/contact.css" />
 </head>
 <body>
-  <div class="countdown-ribbon" style="display: flex; flex-direction: column; align-items: center; padding: 10px;">
+  <!-- <div class="countdown-ribbon" style="display: flex; flex-direction: column; align-items: center; padding: 10px;">
     <p class="brand" style="color: rgb(9, 160, 9); font-size: x-large;">Countdown to the Crooked Path!</p>
     <div id="countdown-timer" class="ribbon-timer" aria-live="polite"></div>
-  </div>
+  </div> -->
 
   <header>
     <div style="align-items: center; display: flex; flex-direction: column">
@@ -22,7 +22,6 @@
       <p class="brand" style="color: rgb(9, 160, 9); font-size: x-large;">Community Jumpscare</p>
     </div>
 
-    <!-- burger shows only < 820px via CSS you already have -->
     <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -38,26 +37,40 @@
   </header>
 
   <main>
+
+    <section class="ig-card-carousel" aria-labelledby="instagram-title">
+      <h2 class="brand" id="instagram-title">Follow Our Instagram!</h2>
+
+      <div class="ig-stage" role="region" aria-roledescription="carousel" aria-label="Instagram posts">
+        <span class="ig-arrow left" aria-label="Previous">‹</span>
+        <span class="ig-arrow right" aria-label="Next">›</span>
+
+        <div class="ig-slides">
+          <a class="ig-slide" href="https://www.instagram.com/p/DEY1U5cJ3ul/" target="_blank" rel="noopener">
+            <img src="assets/images/CP Homepage static.png" alt="Instagram post 1">
+          </a>
+          <a class="ig-slide" href="https://www.instagram.com/p/DFyBCSnSaq7/" target="_blank" rel="noopener">
+            <img src="assets/images/gofundmetree.jpg" alt="Instagram post 2">
+          </a>
+          <a class="ig-slide" href="https://www.instagram.com/p/DDkegrRytxi/" target="_blank" rel="noopener">
+            <img src="assets/images/CP W4.png" alt="Instagram post 3">
+          </a>
+          <!-- add more slides as needed -->
+        </div>
+      </div>
+    </section>
+
     <section class="contact-card reveal" aria-labelledby="contact-title">
       <h2 id="contact-title">Contact the Crooked Path</h2>
       <p class="contact-intro">
-        Questions about the event, volunteering, or sponsorship? Send us a note.
+        Questions about the event or sponsorship opportunities? Send us a note.
       </p>
 
       <!-- mailto keeps it simple; opens the user's mail client -->
       <form class="contact-form" action="mailto:awayseemsright@gmail.com" method="POST" enctype="text/plain">
-        <div class="field">
-          <label for="name">Your Name</label>
-          <input id="name" name="name" type="text" required autocomplete="name" />
-        </div>
 
-        <div class="field">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="6" required></textarea>
-        </div>
-
-        <button class="btn-cta" type="submit">Send Message</button>
-        <p class="form-note">Submitting opens your default email app with the message prefilled.</p>
+        <button class="btn-cta" type="submit">Compose Email</button>
+        <p class="form-note">Button opens your default email app.</p>
       </form>
     </section>
   </main>
@@ -70,5 +83,52 @@
   </footer>
 
   <script src="js/site.js" defer></script>
+
+<script>
+  (() => {
+    const root   = document.querySelector('.ig-card-carousel');
+    const stage  = root.querySelector('.ig-stage');
+    const slides = Array.from(root.querySelectorAll('.ig-slide'));
+    const prev   = root.querySelector('.ig-arrow.left');
+    const next   = root.querySelector('.ig-arrow.right');
+
+    let i = 0;                         // current index
+
+    function side(idx){
+      const n = slides.length;
+      const d = (idx - i + n) % n;     // distance clockwise from active
+      if (d === 0) return 'active';
+      if (d === 1) return 'next';
+      if (d === n-1) return 'prev';
+      return d < n/2 ? 'off-right' : 'off-left';
+    }
+
+    function render(){
+      slides.forEach((s, idx) => {
+        s.classList.remove('is-active','is-prev','is-next','is-off-left','is-off-right');
+        s.classList.add('is-' + side(idx));
+        s.setAttribute('aria-hidden', side(idx) !== 'active');
+      });
+    }
+
+    function go(delta){
+      i = (i + delta + slides.length) % slides.length;
+      render();
+    }
+
+    // init
+    render();
+    prev.addEventListener('click', () => go(-1));
+    next.addEventListener('click', () => go(1));
+
+    // keyboard support
+    stage.tabIndex = 0;
+    stage.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft')  go(-1);
+      if (e.key === 'ArrowRight') go(1);
+    });
+  })();
+</script>
+
 </body>
 </html>
