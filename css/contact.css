@@ -28,42 +28,11 @@
   color: #eaeaea;
 }
 
-/* Form */
 .contact-form{
   display:grid;
   gap: clamp(.75rem, 2.5vw, 1rem);
 }
 
-.field{ display:grid; gap:.4rem; }
-
-label{
-  font-weight:600;
-  font-size: var(--step--1);
-  color:#f8f8f8;
-}
-
-input, textarea{
-  width:100%;
-  color:#fff;
-  background:#121212;
-  border:1px solid #242424;
-  border-radius: 10px;
-  padding: .75rem .9rem;
-  font: inherit;
-  line-height:1.45;
-  transition: border-color .2s ease, box-shadow .2s ease, background-color .2s ease;
-}
-
-input::placeholder, textarea::placeholder{ color:#9a9a9a; }
-
-input:focus-visible, textarea:focus-visible{
-  outline:none;
-  border-color: var(--ring);
-  box-shadow: 0 0 0 6px var(--ring);
-  background:#101010;
-}
-
-/* Submit button (matches your ghost/neon hover vibe) */
 .btn-cta{
   justify-self:start;
   display:inline-block;
@@ -88,7 +57,6 @@ input:focus-visible, textarea:focus-visible{
   color:#bdbdbd;
 }
 
-/* Small screens tighten */
 @media (max-width: 420px){
   .btn-cta{ width:100%; text-align:center; }
 }
@@ -100,7 +68,7 @@ input:focus-visible, textarea:focus-visible{
   position: relative;
   height: clamp(240px, 45vw, 460px);
   border-radius: var(--radius,16px);
-    background:
+  background:
     radial-gradient(80% 120% at 50% 0%, rgba(255,60,0,.08), transparent 60%),
     var(--surface);
   box-shadow: var(--shadow,0 10px 30px rgba(0,0,0,.35));
@@ -150,9 +118,7 @@ input:focus-visible, textarea:focus-visible{
 .ig-arrow.right{ right: 10px; }
 .ig-arrow:hover{ background: rgba(255,255,255,.16); }
 
-/* Mobile: slightly taller cards feel better */
 @media (max-width: 700px){
   .ig-stage{ height: clamp(260px, 55vw, 420px); }
   .ig-slide img{ aspect-ratio: 4/3; }
 }
-

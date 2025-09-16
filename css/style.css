@@ -21,6 +21,13 @@
   --shadow: 0 10px 30px rgba(0,0,0,.35);
 }
 
+@font-face {
+  font-family: 'Shlop';
+  src: url('/assets/fonts/shlop/shlop rg.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 /* -------- View Transitions: default cross-fade -------- */
 
 /* timing for both old and new snapshots */
@@ -181,7 +188,7 @@ nav a:hover::after{ transform:scaleX(1); }
     min-height: clamp(500px, 75vh, 800px) !important;
     background-image: url('/assets/images/CP POSTER jumpscare.jpg') !important;
     background-size: cover;
-    background-position: center;
+    background-position: center;animation: spooky-flicker 6s linear infinite;
     background-repeat: no-repeat;
     border-radius: var(--radius);
     box-shadow: var(--shadow);

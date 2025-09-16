@@ -6,7 +6,6 @@
   <link rel="icon" href="assets/images/og.svg" type="image/svg+xml" />
   <title>Crooked Path</title>
 
-  <!-- Same fonts as other page -->
   <link href="https://fonts.googleapis.com/css2?family=Creepster&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/home.css" />
@@ -18,13 +17,11 @@
     </div> -->
 
   <header>
-    <div class="title-banner" style="align-items: center; display: flex; flex-direction: column">
+    <div class="title-banner" style="align-items: center; display: flex; flex-direction: column;">
       <h1 class="brand">Crooked Path</h1>
       <p class="brand" style="color: rgb(9, 160, 9); font-size: x-large;">Community Jumpscare</p>
     </div>
     
-
-    <!-- hamburger (CSS shows it only < 820px) -->
     <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -39,20 +36,19 @@
     </nav>
   </header>
 
-  <main>
+  <main style="padding: 0">
   
-  <section class="home-hero reveal" aria-labelledby="home-hero-title">
-  </section>
+    <section class="home-hero reveal" aria-labelledby="home-hero-title">
+      <div class="hero-copy">
+        <span class="drip-text outline">CROOKED</span>
+        <span class="drip-text neon">COMMUNITY JUMPSCARE</span>
+        <span class="drip-text outline">PATH</span>
 
-    <!-- Event details styled like your rules card -->
-    <section class="event-card reveal" aria-labelledby="event-title">
-      <h2 id="event-title">Event Details</h2>
-      <ul class="event-list">
-        <li><strong>Date:</strong> Halloween 2025</li>
-        <li><strong>Time:</strong> 6:00 PM – 10:00 PM</li>
-        <li><strong>Location:</strong> 2807 Morrene Dr, Placerville, CA 95667</li>
-        <li><strong>Admission:</strong> <span class="free">FREE ENTRY</span></li>
-      </ul>
+        <div class="event-details">
+          <p class="event-text">October 31st • 6PM - 10PM • Placerville, CA • Free Admission</p>
+          <a href="https://www.google.com/maps?q=2807+Morrene+Dr,+Placerville,+CA+95667" target="_blank" rel="noopener" class="btn btn--primary">Get Directions</a>
+        </div>
+      </div>
     </section>
 
     <section class="map-card reveal" aria-labelledby="map-title">
@@ -85,7 +81,6 @@
     </a>
   </footer>
 
-  <!-- same tiny JS you used on the contest page -->
   <script src="js/site.js" defer></script>
 </body>
 </html>
