@@ -1,136 +1,5 @@
-/* ====== Design tokens ====== */
-:root{
-  --bg: #0b0b0b;
-  --bg-2: #121212;
-  --surface: #181818;
-  --text: #f2f2f2;
-  --muted: #bdbdbd;
-  --accent: #ff3c00;      /* pumpkin orange */
-  --accent-2: #ff6a2a;
-  --ring: rgba(255,60,0,.35);
-
-  /* fluid type scale */
-  --step--1: clamp(.9rem, .8rem + .2vw, 1rem);
-  --step-0: clamp(1rem, .9rem + .6vw, 1.15rem);
-  --step-1: clamp(1.25rem, 1.05rem + 1.2vw, 1.6rem);
-  --step-2: clamp(1.6rem, 1.2rem + 2.0vw, 2.2rem);
-  --step-3: clamp(2.1rem, 1.3rem + 3.2vw, 3rem);
-  --step-4: clamp(2.6rem, 1.4rem + 4.8vw, 3.8rem);
-
-  --radius: 14px;
-  --shadow: 0 10px 30px rgba(0,0,0,.35);
-}
-
-/* ====== Base ====== */
-*{ box-sizing:border-box; }
-html,body{ height:100%; }
-body{
-  margin:0;
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  color:var(--text);
-  background: radial-gradient(1200px 600px at 50% -10%, #141414, transparent), var(--bg);
-  line-height:1.55;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
-}
-body.nav-open{ overflow:hidden; }
-
-img{ max-width:100%; height:auto; display:block; }
-a{ color:inherit; text-decoration:none; }
-
-/* ====== Header / Nav ====== */
-header{
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:1rem;
-  padding: .9rem clamp(1rem, 3vw, 2rem);
-  background: color-mix(in oklab, var(--bg-2) 75%, transparent);
-  border-bottom: 1px solid #1f1f1f;
-  backdrop-filter: blur(8px);
-}
-
-.brand{
-  font-family: Creepster, cursive;
-  font-size: var(--step-3);
-  margin:0;
-  letter-spacing:.5px;
-  line-height:1;
-  color: #fff;
-  text-shadow: 0 2px 12px rgba(0,0,0,.65);
-  animation: spooky-flicker 6s linear infinite;
-}
-
-/* hamburger */
-.nav-toggle{
-  /* HIDE BY DEFAULT (desktop/tablet) */
-  display:none;
-  width:42px; height:36px;
-  padding:0; margin:0;
-  background:transparent; border:0; cursor:pointer;
-  position:relative;
-}
-.nav-toggle span{
-  position:absolute; left:8px; right:8px; height:2px;
-  background:#e7e7e7; transition:transform .25s ease, top .25s ease, opacity .2s;
-}
-.nav-toggle span:nth-child(1){ top:10px; }
-.nav-toggle span:nth-child(2){ top:17px; }
-.nav-toggle span:nth-child(3){ top:24px; }
-.nav-toggle[aria-expanded="true"] span:nth-child(1){ top:17px; transform:rotate(45deg); }
-.nav-toggle[aria-expanded="true"] span:nth-child(2){ opacity:0; }
-.nav-toggle[aria-expanded="true"] span:nth-child(3){ top:17px; transform:rotate(-45deg); }
-
-/* nav links (desktop default) */
-nav{
-  display:flex; gap: clamp(.6rem, 2.2vw, 1.4rem);
-  align-items:center; white-space:nowrap;
-}
-nav a{
-  padding:.35rem .25rem;
-  font-weight:600;
-  color:#d8d8d8;
-  position:relative;
-  transition: color .2s ease;
-}
-nav a::after{
-  content:""; position:absolute; left:0; right:0; bottom:-6px; height:2px;
-  background: linear-gradient(90deg, transparent, var(--accent), transparent);
-  transform:scaleX(0); transform-origin:center; transition:transform .25s ease;
-}
-nav a:hover{ color:#fff; text-shadow:0 0 20px color-mix(in oklab, var(--accent) 50%, transparent); }
-nav a:hover::after{ transform:scaleX(1); }
-
-/* ====== Mobile nav (only under 820px) ====== */
-@media (max-width: 820px){
-  /* show burger on small screens */
-  .nav-toggle{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-  }
-
-  /* turn nav into an overlay drawer below header */
-  nav{
-    position: fixed;
-    inset: 60px 0 auto 0; /* under header */
-    background: color-mix(in oklab, var(--bg-2) 94%, transparent);
-    border-bottom: 1px solid #202020;
-    display:grid; gap:.75rem;
-    padding:1rem 1.25rem 1.5rem;
-    transform: translateY(-120%);
-    transition: transform .28s ease;
-  }
-  .nav-open nav{ transform: translateY(0); }
-}
-
-/* ====== Main layout ====== */
 main{ padding: clamp(1rem, 2vw, 1.5rem); }
 
-/* ====== Hero ====== */
 .carving-hero{
   position:relative;
   isolation:isolate;
@@ -147,7 +16,6 @@ main{ padding: clamp(1rem, 2vw, 1.5rem); }
   text-shadow: 0 1px 2px rgba(0,0,0,.9);
 }
 
-/* optional slow parallax tilt on hover (desktop only) */
 @media (hover:hover){
   .carving-hero:hover{ transform: perspective(1000px) translateZ(0); }
   .carving-hero:hover .carving-text{ transform: translateY(-2px); transition: transform .4s ease; }
@@ -164,7 +32,6 @@ main{ padding: clamp(1rem, 2vw, 1.5rem); }
 }
 .carving-hero p{ font-size: var(--step-0); margin:.5rem 0 .75rem; color:#f6f6f6; }
 
-/* ====== Footer ====== */
 footer{
   padding:2rem 1rem; text-align:center; color:var(--muted);
 }
@@ -181,26 +48,21 @@ footer{
 }
 .social-icon{ width:1.1rem; height:1.1rem; filter: grayscale(1) brightness(1.6); }
 
-/* ====== Scroll reveal (progressive) ====== */
 .reveal{ opacity:0; transform: translateY(14px); }
 .reveal.is-visible{ opacity:1; transform:none; transition: opacity .6s ease, transform .6s ease; }
 
-/* ====== Motion safety ====== */
 @media (prefers-reduced-motion: reduce){
   *{ animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: 0s !important; }
 }
 
-/* ====== Keyframes ====== */
 @keyframes spooky-flicker{
   0%, 18%, 22%, 25%, 53%, 57%, 100% { opacity:1; }
   20%, 24%, 55% { opacity:.72; }
   23% { opacity:.45; }
 }
 
-/* ====== Utilities ====== */
 .container{ max-width: 1100px; margin:0 auto; padding-inline: 1rem; }
 
-/* ====== Home hero text (uses existing .carving-hero container) ====== */
 .home-eyebrow{
   margin:0 0 .15rem;
   color: color-mix(in oklab, var(--accent) 85%, #ffd8c4);
@@ -225,7 +87,6 @@ footer{
   opacity:.96;
 }
 
-/* ====== Gallery ====== */
 .gallery-title{
   font-family: Creepster, cursive;
   font-size: var(--step-3);
@@ -236,7 +97,6 @@ footer{
   animation: spooky-flicker 8s linear infinite;
 }
 
-/* Intro/video card matches the other cards */
 .gallery-intro{
   max-width: 1100px;
   margin: clamp(1rem, 4vw, 2rem) auto 1.25rem;
@@ -251,7 +111,6 @@ footer{
   text-shadow: 0 1px 2px rgba(0,0,0,.6);
 }
 
-/* Responsive 16:9 video with rounded corners and subtle ring on focus */
 .video-wrapper{
   position:relative;
   aspect-ratio: 16 / 9;
@@ -269,7 +128,6 @@ footer{
   box-shadow: 0 0 0 6px var(--ring);
 }
 
-/* Grid container styled like other sections */
 .gallery-grid{
   max-width: 1100px;
   margin: 0 auto 2.5rem;
@@ -284,7 +142,6 @@ footer{
   text-shadow: 0 0 14px color-mix(in oklab, var(--accent) 40%, transparent);
 }
 
-/* Responsive photo grid */
 .grid{
   display:grid;
   grid-template-columns: repeat(12, 1fr);
@@ -294,7 +151,6 @@ footer{
   .grid{ grid-template-columns: repeat(6, 1fr); }
 }
 
-/* Each image spans columns responsively */
 .grid img{
   width:100%; height:auto; display:block;
   grid-column: span 4;              /* 3 per row on desktop (12/4) */
